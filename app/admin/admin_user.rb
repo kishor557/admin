@@ -17,7 +17,7 @@ ActiveAdmin.register AdminUser do
   form :html => { enctype: "multipart/form-data", multipart: true } do |f|
     f.inputs "Admin Details" do
       f.input :email
-      if f.object.id.nil? || current_admin_user == f.object
+      unless f.object.id.nil? || current_admin_user == f.object
         f.input :password
         f.input :password_confirmation
       end
@@ -54,12 +54,10 @@ ActiveAdmin.register AdminUser do
   
    def update
     @user = AdminUser.find(params[:id])
-    profile = params[:admin_user].delete("profile_attributes")
     if @user.update_attributes(user_params)
-      @user.profile.update_attributes(profile)
       redirect_to admin_admin_user_path(@user)
     else
-      redirect_to :back, alert: "Errors!: #{error_messages_for(@user)}"
+      redirect_to :back, alert: "Errors!: #{@user.profile.errors.full_messages}"
     end
    end
    

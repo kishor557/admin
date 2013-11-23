@@ -1,20 +1,19 @@
-- admin = AdminUser.find_by_email("amit1@rubyeffect.com")
 .row.clearfix
-  %h1= admin.full_name
+  %h1= @admin.full_name
   .span3.blk-color.clearfix 
     %p
-      = link_to image_tag(admin.profile.image.url(:medium)), admin.profile.image.url, target: '_blank'
-    %p= link_to "View Full Size", admin.profile.image.url, target: '_blank'
+      = link_to image_tag(@admin.profile.image.url(:medium)), @admin.profile.image.url, target: '_blank'
+    %p= link_to "View Full Size", @admin.profile.image.url, target: '_blank'
     %div
       %p
         %b Contact me
-        = mail_to(admin.email)
+        = mail_to(@admin.email)
       %p
         %b Active since
-        = admin.created_at.strftime("%B %Y")
+        = @admin.created_at.strftime("%B %Y")
       %p
         %b Profile Views
-        = admin.profile.try(:views)
+        = @admin.profile.try(:views)
   .span8.blk-color.clearfix
     %p
       %h3 My Blogs
@@ -25,7 +24,7 @@
         - Profile.column_names[2..10].each do |cname|
           %tr
             %td= "#{cname.tr('_', ' ').titleize} :"
-            %td= admin.profile.send(cname).titleize
+            %td= @admin.profile.send(cname).titleize
         
 .clearfix     
   = link_to "Back to the Posts", root_path  
