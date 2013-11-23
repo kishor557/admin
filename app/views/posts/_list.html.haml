@@ -13,7 +13,7 @@
               %br
               %p
                 Posted by
-                = link_to post.user.full_name, "#"
+                = link_to post.user.full_name, "#" if post.user
                 at
                 = post.created_at.strftime("%H:%M")
                 &nbsp;&nbsp;&nbsp;

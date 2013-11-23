@@ -1,9 +1,9 @@
 .about.clearfix
   %h4 ABOUT ME
-  - admin = AdminUser.find_by_email("amit1@rubyeffect.com")
-  %p= image_tag(admin.profile.image.url(:thumb))
+  - admin = AdminUser.find_by_email("kishore@rubyeffect.com")
+  %p= image_tag(admin.profile.image.url(:thumb)) if admin.profile
   %p
-    %b= link_to_admin_profile(admin)
+    %b= link_to_admin_profile(admin) if admin
   = link_to "View my complete profile", profile_path(admin.profile)
 %br/  
 .blogs-list.clearfix
