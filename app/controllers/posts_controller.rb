@@ -55,9 +55,8 @@ class PostsController < ApplicationController
   
   private
   def load_post
-    @post = Post.find_by(title: params[:id].gsub("-", " "))
-    Rails.logger.debug "\n..POSt.....#{@post}\n"
     #@post = Post.find(params[:id])
+    @post = Post.find_by(title: params[:id].gsub("-", " "))
   end
   
   def post_params

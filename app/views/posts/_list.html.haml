@@ -7,7 +7,8 @@
         - list.each do |post|
           %li
             .post-outer
-              %h5= link_to post.title.titleize, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.parameterize)
+              %h5
+                = link_to post.title.titleize, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.gsub(" ", "-"))
               %p
                 = format_content(post.content)
               %br
@@ -17,7 +18,7 @@
                 at
                 = post.created_at.strftime("%H:%M")
                 &nbsp;&nbsp;&nbsp;
-                = link_to pluralize(post.comments.size, 'comments'), post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.parameterize)
+                = link_to pluralize(post.comments.size, 'comments'), post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.gsub(" ", "-"))
               - if current_admin_user
                 .links
                   = link_to "Edit", edit_admin_post_path(post)
