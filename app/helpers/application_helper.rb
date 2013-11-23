@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def link_to_admin_profile(admin)
-    link_to (admin.profile ? admin.full_name : admin.email), profile_path(admin.profile)
+    link_to (admin.profile ? admin.full_name : admin.email), (admin.profile ? profile_path(admin.profile) : "#")
   end
  
   def devise_mapping

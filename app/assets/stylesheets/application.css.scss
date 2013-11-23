@@ -131,6 +131,7 @@ a {
   background-color: #1c1c1c;
   border: solid 1px transparent;
   padding: 15px 20px;
+  margin: 0 0 25px 0;
   @include rounded-corners(4px);
   h5 {
     margin: 3px 0px 20px 0px;

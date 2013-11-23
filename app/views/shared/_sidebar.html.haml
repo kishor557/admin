@@ -3,8 +3,8 @@
   - admin = AdminUser.find_by_email("kishore@rubyeffect.com")
   %p= image_tag(admin.profile.image.url(:thumb)) if admin.profile
   %p
-    %b= link_to_admin_profile(admin) if admin
-  = link_to "View my complete profile", profile_path(admin.profile)
+    %b= link_to_admin_profile(admin)
+  = link_to "View my complete profile", profile_path(admin.profile) if admin.profile
 %br/  
 .blogs-list.clearfix
   %h4 BLOG ARCHIVE

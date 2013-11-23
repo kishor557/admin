@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
   
   def view
-    @comment = @post.comments.build
+   # @comment = @post.comments.build
   end
   
   def destroy
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   
   private
   def load_post
-    @post = Post.find_by_title(params[:id].gsub("-", " "))
+    @post = Post.find_by(title: params[:id].gsub("-", " "))
     #@post = Post.find(params[:id])
   end
   

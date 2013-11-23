@@ -10,7 +10,7 @@ class AdminUser < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   
   def full_name
-    [profile.first_name, profile.last_name].join(" ").titleize if profile
+    profile ? [profile.first_name, profile.last_name].join(" ").titleize : email
   end
   
 end
