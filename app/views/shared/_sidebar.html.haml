@@ -1,10 +1,11 @@
 .about.clearfix
   %h4 ABOUT ME
-  - admin = AdminUser.find_by_email("kishore@rubyeffect.com")
-  %p= image_tag(admin.profile.image.url(:thumb)) if admin.profile
   %p
-    %b= link_to_admin_profile(admin)
-  = link_to "View my complete profile", profile_path(admin.profile) if admin.profile
+    =# image_tag(@admin.profile.image.url(:thumb)) if @admin.profile
+    = link_to image_tag("Image0001.JPG", width: 80, height: 80), "#" if @admin.profile
+  %p
+    %b= link_to_admin_profile(@admin)
+  = link_to "View my complete profile", profile_path(@admin.profile) if @admin.profile
 %br/  
 .blogs-list.clearfix
   %h4 BLOG ARCHIVE

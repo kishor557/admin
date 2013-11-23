@@ -33,6 +33,7 @@ gem 'jquery-rails'
 
 # upload your attachments or a picture
 gem 'paperclip', '~> 3.5.0'
+gem 'rmagick'
 
 # markup
 gem 'haml', '4.0.0'

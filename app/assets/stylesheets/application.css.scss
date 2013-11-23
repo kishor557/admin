@@ -329,4 +329,25 @@ a {
   color: #000;
   @include rounded-corners(6px);
 }
+
+.profile-block {
+  width: 100%;
+  tr {
+    &.odd { 
+      background: #fff;
+    }
+    &.even {
+      background: #eee;
+    }
+    td {
+      padding: 5px;
+      color: #111;
+      &:first-child {
+        width: 120px;
+        border-right: 1px solid #111;
+        margin-right: 10px;
+      }
+    }
+  }
+}
 @import "posts";
