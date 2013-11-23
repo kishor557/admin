@@ -45,8 +45,10 @@ class PostsController < ApplicationController
   def search
     redirect_to root_path if params[:yy].blank? && params[:mm].blank?
     query = []
-    query << "YEAR(created_at) = '#{params[:yy]}'" if params[:yy]
-    query << "MONTH(created_at) = '#{params[:mm]}'" if params[:mm]
+    query << "(extract(year from created_at) = '#{params[:yy]}')" if params[:yy]
+    query << "(extract(month from created_at) = '#{params[:mm]}')" if params[:mm]
+    #query << "YEAR(created_at) = '#{params[:yy]}'" if params[:yy]
+    #query << "MONTH(created_at) = '#{params[:mm]}'" if params[:mm]
     Rails.logger.debug "\n.......#{query.join(" AND ")}\n"
     @posts = Post.where(query.join(" AND "))
   end
@@ -54,6 +56,7 @@ class PostsController < ApplicationController
   private
   def load_post
     @post = Post.find_by(title: params[:id].gsub("-", " "))
+    Rails.logger.debug "\n..POSt.....#{@post}\n"
     #@post = Post.find(params[:id])
   end
   
