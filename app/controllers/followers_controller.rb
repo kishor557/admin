@@ -6,10 +6,10 @@ class FollowersController < ApplicationController
     case(params[:type])
       when "follow"
         @admin.followers << current_follower
-        Notifier.follow(current_follower).deliver
+        #Notifier.follow(current_follower).deliver
       when "unfollow"  
         @admin.followers.delete(current_follower)
-        Notifier.unfollow(current_follower).deliver
+        #Notifier.unfollow(current_follower).deliver
     end
     redirect_to :back
   end
