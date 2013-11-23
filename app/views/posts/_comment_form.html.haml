@@ -1,0 +1,5 @@
+= form_for [@post, @comment] do |f|
+  %p= f.hidden_field :follower_id, value: current_follower.id if current_follower
+  %p= f.text_area :text
+  %p= f.select :type, ["Anonymous", "As a member"]
+  %p= f.submit "Save"

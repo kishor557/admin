@@ -1,0 +1,22 @@
+%div{:style => "font-family: helvetica, arial, sans-serif; background-color:#e1e1e1; padding:25px; text-align:left;"}
+  %div{:style => "width:640px;margin:0 auto"}
+    %table{:style => "width: 100%; font-size:12px;"}
+      %tbody
+        %tr
+          %td{:style => 'padding-left: 20px'}
+            #logo{:style=>"font-size:30px;"} RoR Magick
+          %td{:colspan => 2, :style => "text-align:right; color:grey; font-size:23px; padding-right: 20px"}
+            = title
+          %tr
+            %td{:colspan => 3, :style => "font-size:12px;width:100%;background-color:white;border:1px solid #cccccc;padding: 40px 50px"}
+              = yield
+          %tr
+            %td{style: 'text-align:left;color:#776e77;font-size:9px; padding-left: 20px'}
+              This email was sent by:
+              %br
+              Kishore
+              %br
+              Sri Nagar Colony, Hyderabad
+              %br
+              AP, INDIA.
+            %td{:colspan => 2, style: 'text-align:right;font-size: 12px; padding-right: 20px'}

@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title ActiveAdmin
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar
+      #b-navbar
+        #b-navbar-bg{style: "z-index:-1"}
+        .align-right
+          - if current_admin_user
+            = current_admin_user.email
+            |
+            \#{link_to "Sign out", destroy_admin_user_session_path, :method => "delete"}
+    .container#container
+      #header-2
+        .titlewrapper
+          %h1.title
+            RoR Magick
+        .descriptionwrapper
+          %p.description
+            %span Ruby on Rails thoughts and magic's !!!
+      = yield
+    .footer
+      = render 'shared/footer'  

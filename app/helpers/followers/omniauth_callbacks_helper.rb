@@ -1,0 +1,2 @@
+module Followers::OmniauthCallbacksHelper
+end

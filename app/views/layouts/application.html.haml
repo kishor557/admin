@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title ActiveAdmin
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar
+      #b-navbar
+        #b-navbar-bg{style: "z-index:-1"}
+        .center
+          //%p.notice= notice
+          //%p.alert= alert
+        .align-right
+          - if current_admin_user
+            = current_admin_user.email
+            |
+            \#{link_to "Sign out", destroy_admin_user_session_path, :method => "delete"}
+    #container
+      #header-2
+        .titlewrapper
+          %h1.title
+            RoR Magick
+        .descriptionwrapper
+          %p.description
+            %span Ruby on Rails thoughts and magic's !!!
+      .main-content.clearfix
+        .content.clearfix
+          = yield
+        .sidebar.clearfix
+          = render 'shared/sidebar'
+      .footer
+        = render 'shared/footer'    
+:javascript
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'rormagick'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());        

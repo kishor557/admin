@@ -1,0 +1,11 @@
+%div
+  %h3= @post.title
+  %p
+    = format_content(@post.content)
+
+%div
+  %h3 Post a Comment
+  = render 'comments', post: @post
+
+    
+= link_to "Back", :back    

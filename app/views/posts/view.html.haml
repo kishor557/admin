@@ -1,0 +1,14 @@
+=# render template: 'show.html.haml'
+%h5= @post.created_at.strftime("%A, %d %B %Y")
+.post-outer
+  %h3= @post.title
+  %p
+    = format_content(@post.content)
+ 
+%div
+  %h3 Post a Comment
+  = render 'comment_form', comment: @comment 
+ 
+    
+= link_to "Back to the list", root_path
+

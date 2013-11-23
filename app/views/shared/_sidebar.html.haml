@@ -1,0 +1,62 @@
+.about.clearfix
+  %h4 ABOUT ME
+  - admin = AdminUser.find_by_email("amit1@rubyeffect.com")
+  %p= image_tag(admin.profile.image.url(:thumb))
+  %p
+    %b= link_to_admin_profile(admin)
+  = link_to "View my complete profile", profile_path(admin.profile)
+%br/  
+.blogs-list.clearfix
+  %h4 BLOG ARCHIVE
+  = link_to_all_posts
+%br/
+.followers.clearfix
+  .user-links
+    - if current_follower
+      .btn-group
+        %button.btn.btn-inverse
+          = current_follower.email
+        %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu
+          - if @admin.followers.include?(current_follower)
+            %li
+              = link_to "<b>UnFollow</b> this Blog".html_safe, followers_path(type: 'unfollow')
+          - else
+            %li
+              = link_to "<b>Follow</b> this Blog".html_safe, followers_path(type: 'follow')
+          %li.divider
+          %li= link_to "Sign Out", destroy_follower_session_path, method: :delete   
+    - else
+      .btn-group
+        %button.btn.btn-inverse
+          Not a member, yet?
+        %button.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to "Sign up with your email", new_follower_registration_path, method: :get
+          %li.divider
+          %li= link_to "Sign up/Sign in with Facebook", follower_omniauth_authorize_path(:facebook), class: "popup", "data-width" => 600, "data-height" => 400
+          %li= link_to "Sign up/Sign in with Google", follower_omniauth_authorize_path(:google_oauth2), class: "popup", "data-width" => 600, "data-height" => 400
+  %hr      
+  %h4 Followers
+  = followers
+  .follow-pics
+    - @admin.followers.each do |follow|
+      %p= image_tag("NoPicture.jpg", title: follow.email)
+  %br
+  - if !current_follower
+    .member
+      %span Already a member?
+      %b= link_to "Sign In", new_follower_session_path, method: :get
+  
+      
+    
+:javascript
+  $(document).ready(function() {
+     $(".arrow").click(function() {
+       var id = $(this).attr('id');
+       $(this).toggleClass('toggle-arrow');
+       $("."+id+"_posts").toggle();
+    });
+  });
