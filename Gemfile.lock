@@ -53,6 +53,9 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    ckeditor (4.0.6)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -219,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   bootstrap-sass (~> 2.1.0.0)
+  ckeditor
   coffee-rails (~> 4.0.0.beta1)
   country_select (~> 1.2.0)
   execjs

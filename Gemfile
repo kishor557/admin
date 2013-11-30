@@ -41,6 +41,9 @@ gem 'haml', '4.0.0'
 #country
 gem "country_select", "~> 1.2.0"
 
+#CKEDITOR
+gem "ckeditor"
+
 # authentication
 gem 'activeadmin', github: 'gregbell/active_admin'
 #gem 'protected_attributes'

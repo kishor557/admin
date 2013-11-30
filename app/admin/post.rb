@@ -6,12 +6,15 @@ ActiveAdmin.register Post do
 
     default_actions
   end
+ 
+ #form :partial => "form" 
   
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs do
      f.input :admin_user_id, as: :hidden, value: current_admin_user.id
      f.input :title 
-     f.input :content
+     f.input :content, :as => :ckeditor
     end
     f.actions
   end

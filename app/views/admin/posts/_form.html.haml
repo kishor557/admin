@@ -1,0 +1,10 @@
+h
+= semantic_form_for [:admin, @post] do |f|
+  = f.inputs :title
+  %fieldset.inputs
+    = f.label :content
+    %div{style: "width: 76%;"}
+    = f.cktext_area :content, :toolbar => 'Easy', :width => 960, :height => 265
+  =# f.inputs :content, :as => :ckeditor  
+  = f.actions :submit
+
