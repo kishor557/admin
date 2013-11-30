@@ -34,7 +34,7 @@ module PostsHelper
   end
 
   def post_url(post)
-    link_to post.title, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.downcase.gsub(" ", "-"))
+    link_to post.title, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.gsub(" ", "-"))
   end
   
   def format_content(data)

@@ -8,7 +8,7 @@
           %li
             .post-outer
               %h5
-                = link_to post.title.titleize, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.downcase.gsub(" ", "-"))
+                = link_to post.title.titleize, post_show_path(yy: post.created_at.strftime("%Y"), mm: post.created_at.strftime("%m"), id: post.title.gsub(" ", "-"))
               %p
                 = post.content.html_safe
               %br
