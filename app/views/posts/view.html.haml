@@ -4,7 +4,7 @@
   %h3= @post.title
   %p
     = @post.content.html_safe
- 
+  .fb-like{"data-action" => "like", "data-href" => post_show_path(yy: @post.created_at.strftime("%Y"), mm: @post.created_at.strftime("%m"), id: @post.title.gsub(" ", "-")), "data-layout" => "button_count", "data-share" => "false", "data-show-faces" => "true"} 
 %div
   %h3 Post a Comment
   =# render 'comment_form', comment: @comment 
@@ -25,3 +25,11 @@
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
+  
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=430791980344979";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
